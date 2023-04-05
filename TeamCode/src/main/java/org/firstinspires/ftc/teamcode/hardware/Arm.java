@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class Arm extends Mechanism{
     Servo armLeft, armRight;
-    Double pickPos = 0, scorePos = 0, readyPos = 1, startPos = 0;
+    int pickPos = 0, scorePos = 0, readyPos = 1, startPos = 0;
     @Override
     public void init(HardwareMap hwMap) {
         armLeft = hwMap.get(Servo.class, "armLeft");
