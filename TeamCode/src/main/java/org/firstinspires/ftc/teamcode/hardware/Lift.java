@@ -53,25 +53,25 @@ public class Lift extends Mechanism{
     public void setPosition(double x) {
         target = x;
 
-        while (Math.abs(error) >= bound) {
+        while (Math.abs(error[0]) >= bound) {
             error[0] = getError(motor1);
             error[1] = getError(motor2);
-            double currentTime = time.milliseconds()
-            motor1.setPower(Range.clip(kP * error + kD * (error -lastError[0])/(currentTime - lastTime) + kG, -1, 1));
-            motor2.setPower(Range.clip(kP * error + kD * (error -lastError[1])/(currentTime - lastTime) + kG, -1, 1));
+            double currentTime = time.milliseconds();
+            motor1.setPower(Range.clip(kP * error[0] + kD * (error[0] -lastError[0])/(currentTime - lastTime) + kG, -1, 1));
+            motor2.setPower(Range.clip(kP * error[1] + kD * (error[1] -lastError[1])/(currentTime - lastTime) + kG, -1, 1));
             update();
         }
 
     }
-    public void scoreLow {
+    public void scoreLow() {
         setPosition(low);
 
     }
-    public void scoreHigh {
+    public void scoreHigh() {
         setPosition(high);
 
     }
-    public void scoreMid {
+    public void scoreMid() {
         setPosition(medium);
 
     }
