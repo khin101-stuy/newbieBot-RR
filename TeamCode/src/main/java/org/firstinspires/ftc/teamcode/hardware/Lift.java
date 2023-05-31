@@ -16,7 +16,7 @@ public class Lift extends Mechanism{
     public static double kD;
     public double lastTime = 0;
     double[] lastError = new double[2];
-     double[] error = new double[2];
+    double[] error = new double[2];
     public double target;
     public   double low;
     public double medium;
@@ -32,10 +32,10 @@ public class Lift extends Mechanism{
         time.reset();
         motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-       motor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-       motor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-      motor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-       motor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motor1.setDirection(DcMotorEx.Direction.FORWARD);
         motor2.setDirection(DcMotorEx.Direction.REVERSE);
         lastError[0] = 0;
@@ -52,8 +52,7 @@ public class Lift extends Mechanism{
     }
     public void setPosition(double x) {
         target = x;
-
-        while (Math.abs(error[0]) >= bound) {
+        while (Math.abs(error[0]) > bound) {
             error[0] = getError(motor1);
             error[1] = getError(motor2);
             double currentTime = time.milliseconds();
